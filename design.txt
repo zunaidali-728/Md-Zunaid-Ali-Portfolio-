@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Md Zunaid Ali | Software Engineer</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&amp;family=DM+Sans:wght@400;500;700&amp;family=Inter:wght@400;700&amp;family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#C8A96E",
+                        "accent-teal": "#00F2FF",
+                        "accent-blue": "#0A84FF",
+                        "surface": "#050B10",
+                        "glass": "rgba(10, 20, 30, 0.7)",
+                        "glass-border": "rgba(0, 242, 255, 0.2)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Playfair Display", "serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        :root {
+            --accent-glow: rgba(0, 242, 255, 0.4);
+        }
+        body {
+            background-color: #050B10;
+            color: #E2E8F0;
+            font-family: 'Manrope', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* High-Tech Background Canvas */
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .glass-panel {
+            background: rgba(10, 15, 25, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .tech-border {
+            position: relative;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        .tech-border::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(45deg, transparent, rgba(0, 242, 255, 0.3), transparent);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .tech-border:hover {
+            border-color: rgba(0, 242, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+        }
+        .tech-border:hover::before {
+            opacity: 1;
+        }
+
+        .headline-gold {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #C8A96E;
+            text-shadow: 0 0 30px rgba(200, 169, 110, 0.2);
+        }
+
+        .editorial-number {
+            font-family: 'Playfair Display', serif;
+            color: rgba(255, 255, 255, 0.03);
+            font-size: clamp(100px, 20vw, 240px);
+            font-weight: 900;
+            line-height: 1;
+            z-index: -1;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .parallax-target {
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Glowing Text Effect */
+        .glow-text-teal {
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050B10; }
+        ::-webkit-scrollbar-thumb { background: #1A2E35; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00F2FF; }
+
+        .btn-tech {
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            border: 1px solid rgba(0, 242, 255, 0.3);
+            color: #00F2FF;
+            transition: all 0.3s ease;
+        }
+        .btn-tech:hover {
+            background: rgba(0, 242, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            border-color: #00F2FF;
+        }
+    </style>
+</head>
+<body class="selection:bg-accent-teal/30 selection:text-white">
+<canvas id="canvas-bg"></canvas>
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b border-white/5 bg-surface/40 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-8 py-5 max-w-7xl mx-auto">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-primary flex items-center justify-center text-[10px] font-bold text-primary">ZA</div>
+<span class="text-lg font-bold tracking-tighter text-white uppercase font-label">Zunaid <span class="text-primary italic">Ali</span></span>
+</div>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-slate-400 hover:text-accent-teal transition-colors duration-300 text-xs uppercase tracking-widest font-bold" href="#about">About</a>
+<a class="text-slate-400 hover:text-accent-teal transition-colors duration-300 text-xs uppercase tracking-widest font-bold" href="#experience">Experience</a>
+<a class="text-slate-400 hover:text-accent-teal transition-colors duration-300 text-xs uppercase tracking-widest font-bold" href="#projects">Systems</a>
+<a class="text-slate-400 hover:text-accent-teal transition-colors duration-300 text-xs uppercase tracking-widest font-bold" href="#contact">Interface</a>
+</div>
+<button class="btn-tech px-6 py-2.5 text-[10px] uppercase font-bold tracking-widest rounded-sm">
+            Resume.exe
+        </button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center items-center relative px-6 text-center pt-20">
+<div class="max-w-5xl space-y-12 reveal active">
+<div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-accent-teal/20 bg-accent-teal/5 text-accent-teal text-[10px] uppercase font-bold tracking-[0.2em]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-accent-teal"></span>
+</span>
+<span>Available for new ventures</span>
+</div>
+<h1 class="text-7xl md:text-[11rem] font-black tracking-tighter leading-[0.8] text-white">
+            Md Zunaid <br/> <span class="headline-gold">Ali.</span>
+</h1>
+<div class="flex flex-col md:flex-row items-center justify-center gap-12 pt-8">
+<p class="text-lg md:text-xl text-slate-400 max-w-md text-left leading-relaxed font-light border-l border-accent-teal/30 pl-8">
+                Architecting high-performance <span class="text-white font-medium">backends</span> &amp; cinematic <span class="text-accent-teal font-medium">user interfaces</span>.
+            </p>
+<div class="flex flex-col gap-4">
+<a class="btn-tech px-12 py-5 text-[10px] uppercase font-bold tracking-[0.3em]" href="#projects">
+                    View Systems
+                </a>
+<a class="text-slate-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-[0.3em] flex items-center justify-center group" href="#">
+<span>Scroll to explore</span>
+<span class="material-symbols-outlined ml-2 text-sm animate-bounce">expand_more</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 01: About -->
+<section class="py-[160px] max-w-7xl mx-auto px-8 relative" id="about">
+<div class="editorial-number absolute top-12 left-8 select-none pointer-events-none reveal">01</div>
+<div class="grid md:grid-cols-2 gap-24 items-center">
+<div class="space-y-12 reveal">
+<h2 class="text-5xl md:text-7xl font-headline font-bold leading-tight text-white">
+                Designing systems that <span class="text-accent-teal glow-text-teal">breathe</span> and scale.
+            </h2>
+<div class="space-y-8 text-slate-400 leading-relaxed text-xl font-light">
+<p>I build bridge between complex logic and human interaction. My approach combines the structural integrity of <span class="text-white italic">Java ecosystems</span> with the fluid aesthetics of modern product design.</p>
+<p>Focusing on high-concurrency architectures and mobile-first experiences that prioritize speed, security, and elegance.</p>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-8">
+<div class="glass-panel p-8 tech-border rounded-xl">
+<span class="text-accent-teal text-4xl font-bold font-headline block mb-2">9.2</span>
+<span class="text-[0.6rem] uppercase tracking-widest text-slate-500 font-bold">Academic DGPA</span>
+</div>
+<div class="glass-panel p-8 tech-border rounded-xl">
+<span class="text-primary text-4xl font-bold font-headline block mb-2">2+</span>
+<span class="text-[0.6rem] uppercase tracking-widest text-slate-500 font-bold">Years Exp.</span>
+</div>
+<div class="glass-panel p-8 tech-border rounded-xl">
+<span class="text-white text-4xl font-bold font-headline block mb-2">15+</span>
+<span class="text-[0.6rem] uppercase tracking-widest text-slate-500 font-bold">Stack Core</span>
+</div>
+</div>
+</div>
+<div class="relative group reveal" style="transition-delay: 0.2s;">
+<!-- Tech Shot Container Reference IMAGE_2 Style -->
+<div class="relative glass-panel p-4 rounded-2xl overflow-hidden tech-border">
+<div class="absolute inset-0 bg-gradient-to-tr from-accent-teal/10 to-transparent"></div>
+<div class="relative overflow-hidden rounded-xl">
+<img alt="Md Zunaid Ali" class="w-full aspect-[4/5] object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[1.5s]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VKQ117W9UJOP4TJUdqXbVf8QLDWerQqFdWK0P5xiGaiqObUXDQFxt-UfxTdFq72mmhpxgR3RfAfptgFULcKfjVwnfGHNOHZt_3o3T8Bup-M3rRxgxfilua9s5HOEE8o9dNnhPOUvWatvK4nceE_hVynLUxrkDn8nUmCMqifxQsCA40a-E7NzzqKFsrU6OyctapqQGf42pf1aCnDeyoqDO73HuKzpmGeCmOTRqZqyarjTwM1SJxubE-_aDzS8F4-S_jqdOYYGAExJ"/>
+<div class="absolute bottom-6 left-6 right-6 p-6 glass-panel rounded-lg border-white/5 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-700">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[10px] text-accent-teal font-bold uppercase tracking-widest mb-1">Status</p>
+<p class="text-white text-sm font-bold">Online / Engineering</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-accent-teal/20 flex items-center justify-center text-accent-teal">
+<span class="material-symbols-outlined text-lg">code</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 02: Experience -->
+<section class="py-[160px] bg-surface/30 border-y border-white/5" id="experience">
+<div class="max-w-7xl mx-auto px-8 relative">
+<div class="editorial-number absolute top-12 right-8 select-none pointer-events-none reveal">02</div>
+<h2 class="text-4xl font-headline font-bold mb-24 text-white flex items-center">
+<span class="w-12 h-px bg-accent-teal mr-6"></span>
+            Operational Experience
+        </h2>
+<div class="space-y-12">
+<!-- TCS -->
+<div class="group reveal relative glass-panel p-10 md:p-16 rounded-3xl tech-border overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-accent-teal/5 blur-[100px] -z-10 group-hover:bg-accent-teal/15 transition-all"></div>
+<div class="flex flex-col md:flex-row justify-between items-start mb-12">
+<div class="space-y-4">
+<div class="flex items-center space-x-4">
+<span class="text-primary font-bold text-xs uppercase tracking-[0.4em]">Enterprise</span>
+<div class="h-1.5 w-1.5 rounded-full bg-accent-teal shadow-[0_0_8px_#00F2FF]"></div>
+</div>
+<h3 class="text-4xl font-bold text-white font-headline">Tata Consultancy Services</h3>
+<p class="text-accent-teal font-bold text-xs uppercase tracking-[0.3em]">Assistant System Engineer • 2024 — Present</p>
+</div>
+<div class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em] mt-4 md:mt-0 p-3 border border-white/5 rounded-lg">
+                        Location: Remote / Global
+                    </div>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<ul class="space-y-6 text-slate-400 text-lg font-light">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-accent-teal text-lg mr-4 mt-1">hub</span>
+<span>Architecting Spring Boot microservices for global financial ecosystems.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-accent-teal text-lg mr-4 mt-1">database</span>
+<span>Engineered Oracle SQL optimization routines reducing latency by 20%.</span>
+</li>
+</ul>
+<div class="bg-black/20 p-8 rounded-2xl border border-white/5 flex items-center justify-center">
+<div class="text-center">
+<p class="text-[10px] text-slate-500 uppercase tracking-widest mb-4">Core Stack Delivery</p>
+<div class="flex flex-wrap justify-center gap-3">
+<span class="px-4 py-2 glass-panel border-white/10 text-[10px] text-white font-bold rounded">JAVA 17</span>
+<span class="px-4 py-2 glass-panel border-white/10 text-[10px] text-white font-bold rounded">SPRING</span>
+<span class="px-4 py-2 glass-panel border-white/10 text-[10px] text-white font-bold rounded">ORACLE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Nagarro -->
+<div class="group reveal relative glass-panel p-12 rounded-2xl border-white/5 hover:border-accent-teal/20 transition-all duration-500">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<div class="space-y-2">
+<h3 class="text-2xl font-bold text-white">Nagarro</h3>
+<p class="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Software Engineer Intern • 2023</p>
+</div>
+<p class="text-slate-400 text-lg font-light max-w-xl md:text-right mt-6 md:mt-0">
+                        Contributed to internal tooling frameworks using React and Node.js, focusing on performance metrics and CI/CD pipelines.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 04: Projects -->
+<section class="py-[160px]" id="projects">
+<div class="max-w-7xl mx-auto px-8 relative">
+<div class="editorial-number absolute top-12 left-8 select-none pointer-events-none reveal">03</div>
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+<h2 class="text-5xl md:text-7xl font-headline font-bold text-white reveal">Featured <br/><span class="text-accent-teal glow-text-teal italic">Systems.</span></h2>
+<p class="text-slate-400 text-lg max-w-md font-light border-l border-white/10 pl-8 reveal">
+                Showcasing projects that leverage cutting-edge tech to solve human-centric problems.
+            </p>
+</div>
+<div class="grid md:grid-cols-2 gap-16">
+<!-- Project 1 - TechCool Style -->
+<div class="group reveal">
+<div class="glass-panel p-3 rounded-[2rem] tech-border mb-8 overflow-hidden transition-all duration-700 hover:scale-[1.02]">
+<div class="relative aspect-video rounded-[1.5rem] overflow-hidden">
+<img alt="Food Donation App" class="w-full h-full object-cover grayscale brightness-50 transition-all duration-[1.5s] group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlTTC8pL5yiEUBC-WUKYT3gEgxKO6cszshsuFTouF5J5QDgXBiiW1T3PNcKyIRmdPPdgDzoU1q6Lt-oGkk_N3RoVgjebBXCktR5y7aC5S3cuxhnEzBQ49RGeDjI6PQm8zerbX54c-HtdeH2b8RkPiuEubUS4AuZIVXzd5HQMgeI9kAzGt32Pf8ot19Mfgb0dnC8YN346Urs0PkgbvFGWhpgsVE2-WygYV2wt1AA6IsfEWPbMt9ex2UThZahPJH-JjHBPqELi8r9FHM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-6 right-6 flex space-x-2">
+<span class="px-4 py-1.5 glass-panel text-[9px] font-bold text-accent-teal rounded-full uppercase tracking-widest border-accent-teal/30">Live System</span>
+</div>
+</div>
+</div>
+<div class="space-y-6 px-4">
+<div class="flex items-center space-x-4">
+<span class="text-[10px] uppercase font-bold tracking-[0.3em] text-primary">Android / Firebase</span>
+<div class="h-1 w-1 rounded-full bg-slate-700"></div>
+<span class="text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500">Logistics</span>
+</div>
+<h3 class="text-4xl font-bold text-white font-headline group-hover:text-accent-teal transition-colors">Food Donation App</h3>
+<p class="text-slate-400 text-lg font-light leading-relaxed">
+                        A real-time logistics platform connecting food surplus with NGOs. Built with MVVM architecture for extreme reliability.
+                    </p>
+<a class="inline-flex items-center space-x-4 text-accent-teal font-bold uppercase tracking-[0.3em] text-[10px] group/link" href="#">
+<span class="border-b border-accent-teal/20 group-hover/link:border-accent-teal transition-all pb-1">Source Code</span>
+<span class="material-symbols-outlined text-sm group-hover/link:translate-x-2 transition-transform">terminal</span>
+</a>
+</div>
+</div>
+<!-- Project 2 - TechCool Style -->
+<div class="group reveal" style="transition-delay: 0.2s;">
+<div class="glass-panel p-3 rounded-[2rem] tech-border mb-8 overflow-hidden transition-all duration-700 hover:scale-[1.02]">
+<div class="relative aspect-video rounded-[1.5rem] overflow-hidden">
+<img alt="Portfolio Website" class="w-full h-full object-cover grayscale brightness-50 transition-all duration-[1.5s] group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOmXeEVgcyfOqTkZSwnFKgJ87IauAyKg8T_msvvEaT8kjzNZaglOjEXYCcFT-aoxvBJRHE4s81ZXSA3hXXl_C9gVZLV2GGvyhHKvr7rpqCxMH_1HCBMbFMk0H_amxP9XIbcPCb-SHUAuol5KA4qD_v3pdzQ4grdmkv6rhLuvOCWJ63QP0-G_oqCamLEfV3NPVYE61-DZeXOqsAWa063_5ZidE1i5lG_SADXM0Rghdh_JfdDtlDJB5WpgpMtPnuLwKlErg8rfCRei8w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-6 right-6 flex space-x-2">
+<span class="px-4 py-1.5 glass-panel text-[9px] font-bold text-primary rounded-full uppercase tracking-widest border-primary/30">Interface</span>
+</div>
+</div>
+</div>
+<div class="space-y-6 px-4">
+<div class="flex items-center space-x-4">
+<span class="text-[10px] uppercase font-bold tracking-[0.3em] text-primary">Tailwind / JS</span>
+<div class="h-1 w-1 rounded-full bg-slate-700"></div>
+<span class="text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500">Design</span>
+</div>
+<h3 class="text-4xl font-bold text-white font-headline group-hover:text-primary transition-colors">Odyssey Portfolio</h3>
+<p class="text-slate-400 text-lg font-light leading-relaxed">
+                        High-fidelity editorial showcase engineered with glassmorphism and performance-optimized animations.
+                    </p>
+<a class="inline-flex items-center space-x-4 text-primary font-bold uppercase tracking-[0.3em] text-[10px] group/link" href="#">
+<span class="border-b border-primary/20 group-hover/link:border-primary transition-all pb-1">View Live</span>
+<span class="material-symbols-outlined text-sm group-hover/link:translate-x-2 transition-transform">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 05: Contact -->
+<section class="py-[200px] relative overflow-hidden" id="contact">
+<div class="absolute inset-0 bg-accent-teal/[0.02] -skew-y-3 origin-left"></div>
+<div class="max-w-7xl mx-auto px-8 relative">
+<div class="editorial-number absolute top-12 right-8 select-none pointer-events-none reveal">04</div>
+<div class="grid md:grid-cols-2 gap-24">
+<div class="space-y-16 reveal">
+<h2 class="text-6xl md:text-8xl font-headline font-bold text-white leading-tight">Initiate <span class="text-primary italic">Contact.</span></h2>
+<div class="space-y-12">
+<div class="flex items-center space-x-8 group">
+<div class="w-16 h-16 rounded-2xl glass-panel tech-border flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(0,242,255,0.2)]">
+<span class="material-symbols-outlined text-accent-teal">alternate_email</span>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Electronic Mail</p>
+<p class="text-2xl font-light text-white">mdzunaidali@example.com</p>
+</div>
+</div>
+<div class="flex items-center space-x-8 group">
+<div class="w-16 h-16 rounded-2xl glass-panel tech-border flex items-center justify-center transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(0,242,255,0.2)]">
+<span class="material-symbols-outlined text-accent-teal">terminal</span>
+</div>
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest font-bold mb-1">Github Repository</p>
+<p class="text-2xl font-light text-white">/md-zunaid-ali</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-12 rounded-[2.5rem] tech-border reveal" style="transition-delay: 0.2s;">
+<form class="space-y-10">
+<div class="space-y-4">
+<label class="block text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500 ml-1">Identity</label>
+<input class="w-full bg-white/5 border border-white/5 focus:border-accent-teal/50 outline-none px-6 py-4 rounded-xl text-white transition-all" placeholder="Enter name..." type="text"/>
+</div>
+<div class="space-y-4">
+<label class="block text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500 ml-1">Email Protocol</label>
+<input class="w-full bg-white/5 border border-white/5 focus:border-accent-teal/50 outline-none px-6 py-4 rounded-xl text-white transition-all" placeholder="user@domain.com" type="email"/>
+</div>
+<div class="space-y-4">
+<label class="block text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500 ml-1">Objective</label>
+<textarea class="w-full bg-white/5 border border-white/5 focus:border-accent-teal/50 outline-none px-6 py-4 rounded-xl text-white transition-all resize-none" placeholder="Transmission details..." rows="4"></textarea>
+</div>
+<button class="w-full btn-tech py-6 text-xs uppercase font-bold tracking-[0.4em] rounded-xl flex items-center justify-center space-x-4">
+<span>Send Transmission</span>
+<span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-24 border-t border-white/5 relative bg-surface">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg border border-accent-teal/30 flex items-center justify-center text-accent-teal font-black">Z</div>
+<span class="text-white text-lg font-bold tracking-tighter">Zunaid Ali</span>
+</div>
+<div class="flex space-x-12">
+<a class="text-slate-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-[0.3em]" href="#">LinkedIn</a>
+<a class="text-slate-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-[0.3em]" href="#">GitHub</a>
+<a class="text-slate-500 hover:text-white transition-all text-[10px] font-bold uppercase tracking-[0.3em]" href="#">Twitter</a>
+</div>
+<div class="text-[9px] text-slate-600 font-bold uppercase tracking-[0.4em]">
+            © 2026 Engineered for Excellence
+        </div>
+</div>
+</footer>
+<script>
+    // Canvas Tech Background Logic
+    const canvas = document.getElementById('canvas-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let width, height;
+
+    function init() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        particles = [];
+        for (let i = 0; i < 80; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4,
+                size: Math.random() * 2 + 1
+            });
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'rgba(0, 242, 255, 0.3)';
+        ctx.strokeStyle = 'rgba(0, 242, 255, 0.05)';
+        
+        particles.forEach((p, i) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Interaction with scroll - move particles slightly based on scroll
+            p.y += window.scrollY * 0.0005;
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+            }
+        });
+        requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+
+    // Intersection Observer for Reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mouse Parallax Effect for Images
+    document.addEventListener('mousemove', (e) => {
+        const amount = 20;
+        const x = (e.clientX / window.innerWidth - 0.5) * amount;
+        const y = (e.clientY / window.innerHeight - 0.5) * amount;
+        
+        document.querySelectorAll('.parallax-target').forEach(el => {
+            el.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+
+    // Header Blur on Scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(5, 11, 16, 0.9)';
+            header.style.paddingTop = '10px';
+            header.style.paddingBottom = '10px';
+        } else {
+            header.style.backgroundColor = 'rgba(5, 11, 16, 0.4)';
+            header.style.paddingTop = '20px';
+            header.style.paddingBottom = '20px';
+        }
+    });
+</script>
+</body></html>

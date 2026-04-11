@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #080808;
+    --color-surface: #0F0F0F;
+    --color-border: #1A1A1A;
+    --color-gold: #C8A96E;
+    --color-gold-dim: #8A6F3F;
+    --color-text: #F0EBE1;
+    --color-muted: #5C5C5C;
+    --color-hint: #2E2E2E;
+
+    --text-hero: clamp(72px, 10vw, 140px);
+    --text-display: clamp(44px, 6vw, 80px);
+    --text-heading: clamp(28px, 3.5vw, 48px);
+    --text-body: 17px;
+  }
+
+  body {
+    @apply bg-background text-text font-body antialiased selection:bg-gold selection:text-background;
+    cursor: none; /* Using custom cursor instead */
+    overflow-x: hidden;
+  }
+
+  /* Expose typography classes explicitly as requested */
+  .font-display {
+    font-family: "Playfair Display", serif;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  
+  .font-body {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  
+  .font-label {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  /* Typography utilities for sizing */
+  .text-hero {
+    font-size: var(--text-hero);
+    line-height: 0.9;
+  }
+
+  .text-display {
+    font-size: var(--text-display);
+    line-height: 1.0;
+  }
+
+  .text-heading {
+    font-size: var(--text-heading);
+    line-height: 1.1;
+  }
+
+  .text-body-lg {
+    font-size: var(--text-body);
+    line-height: 1.75;
+  }
+
+  /* Custom Scrollbar for fallback */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted);
+  }
+}
+
+@layer utilities {
+  .clip-path-wipe {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .group:hover .clip-path-wipe {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .clip-path-wipe-right {
+    clip-path: inset(0 100% 0 0);
+  }
+  .group:hover .clip-path-wipe-right {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .rotate-x-25 {
+    transform: rotateX(25deg);
+  }
+  
+  /* Horizontal gold rule separators */
+  .hr-gold {
+    @apply w-full h-[1px] bg-gold opacity-15;
+  }
+
+  @keyframes split-screen-open {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 1;
+    }
+    10% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    99% {
+      clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+      opacity: 1;
+    }
+    100% {
+      clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+
+/* Base styles for Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
