@@ -1,9 +1,9 @@
 export const portfolioData = {
   personal: {
     name: "Md Zunaid Ali",
-    role: "Software Engineer",
+    role: "Software Engineer & Experience-Focused Full-Stack Developer",
     location: "Kolkata, India",
-    bio: "I am a Software Engineer with expertise in Java backend development, Spring Boot, REST APIs, and Android applications. I design efficient, maintainable systems that deliver real-world value. Currently at Tata Consultancy Services, Kolkata.",
+    bio: "I build polished digital products where backend reliability meets premium interface design. My work blends Java, Spring Boot, REST APIs, Android engineering, and modern React experiences with smooth motion, clean architecture, and production-minded performance.",
     email: "md.zunaid.ali@gmail.com",
     phone: "+91 8252300728",
     github: "https://github.com/zunaidali-728",
@@ -15,7 +15,7 @@ export const portfolioData = {
     {
       company: "Tata Consultancy Services",
       role: "Software Engineer",
-      period: "2026 – Present",
+      period: "2026 - Present",
       location: "Kolkata",
       bullets: [
         "Developed backend components using Core Java and multithreading",
@@ -23,12 +23,12 @@ export const portfolioData = {
         "Optimized Oracle SQL queries improving data retrieval speed",
         "Improved database performance using indexing and query tuning",
         "Integrated REST APIs and applied Spring framework basics",
-      ]
+      ],
     },
     {
       company: "Nagarro",
       role: "Android Developer Intern",
-      period: "Feb 2024 – Dec 2024",
+      period: "Feb 2024 - Dec 2024",
       location: "Remote",
       bullets: [
         "Developed Android apps using Java, XML and Material Design",
@@ -36,18 +36,28 @@ export const portfolioData = {
         "Integrated REST APIs using Retrofit and Firebase",
         "Built authentication flows and navigation features",
         "Optimized UI using RecyclerView and Room database",
-      ]
-    }
+      ],
+    },
   ],
   skills: {
-    Languages: ["Java", "Python", "PL/SQL"],
-    Frameworks: ["React JS", "Three.js", "React Three Fiber", "Spring", "Spring Boot", "REST APIs", "MVVM", "Android"],
-    Databases: ["Oracle SQL", "MySQL", "Firebase"],
-    Tools: ["Framer Motion", "GSAP", "Tailwind CSS", "Vite", "GitHub", "Docker", "Postman"],
+    Languages: ["Java", "Python", "PL/SQL", "TypeScript"],
+    Frameworks: ["React", "Spring Boot", "REST APIs", "Android", "MVVM", "Three.js", "React Three Fiber"],
+    Databases: ["Supabase", "Oracle SQL", "MySQL", "Firebase"],
+    Tools: ["Framer Motion", "GSAP", "Tailwind CSS", "Zustand", "Vite", "GitHub", "Docker", "Postman"],
   },
   projects: [
     {
+      title: "Raja Enterprises",
+      subtitle: "Premium Full-Stack eCommerce Platform",
+      description: "Luxury-themed eCommerce experience with high-performance rendering, fluid Framer Motion interactions, secure role-based admin controls, Supabase catalogue management, product availability toggles, Zustand state, and seamless client-side routing.",
+      image: "",
+      tech: ["React", "Tailwind CSS", "Framer Motion", "Supabase", "Zustand"],
+      live: "https://raja-enterprises.vercel.app/",
+      featured: true,
+    },
+    {
       title: "Food Donation Android App",
+      subtitle: "Community Impact Android Product",
       description: "Android application connecting food donors with NGOs to reduce wastage and help distribute food efficiently across communities.",
       image: "/foodApp.png",
       tech: ["Java", "Android", "Firebase", "MVVM"],
@@ -55,17 +65,18 @@ export const portfolioData = {
     },
     {
       title: "Portfolio Website",
-      description: "Modern developer portfolio built with Next.js, Tailwind CSS, and Framer Motion with fluid scroll animations and responsive layout.",
+      subtitle: "Cinematic Personal Brand System",
+      description: "Premium developer portfolio built with React, Tailwind CSS, GSAP, Framer Motion, and Three.js, designed around fluid scroll animations, responsive composition, and refined personal storytelling.",
       image: "/portfolio.png",
-      tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      github: "https://zunaid-portfolio-app.vercel.app/",
-    }
+      tech: ["React", "Tailwind CSS", "Framer Motion", "GSAP", "Three.js"],
+      live: "https://zunaid-portfolio-app.vercel.app/",
+    },
   ],
   education: [
     {
       institution: "Institute of Engineering and Management, Kolkata",
       degree: "B.Tech Computer Science & Engineering",
-      period: "2021 – 2025",
+      period: "2021 - 2025",
       result: "DGPA: 8.58",
     },
     {
@@ -79,16 +90,16 @@ export const portfolioData = {
       degree: "Secondary Education (Class X)",
       period: "2017",
       result: "CGPA: 9.8",
-    }
+    },
   ],
   stats: [
-    { value: 8.58, label: "DGPA", sublabel: "B.Tech CSE"    },
+    { value: 8.58, label: "DGPA", sublabel: "B.Tech CSE" },
     {
       value: 1,
-      suffix: '+',
-      label: 'YEARS',
-      sublabel: 'Experience'
+      suffix: "+",
+      label: "YEARS",
+      sublabel: "Experience",
     },
-    { value: 15, suffix: "+", label: "Technologies", sublabel: "In daily workflow" },
-  ]
+    { value: 20, suffix: "+", label: "Technologies", sublabel: "Across full-stack builds" },
+  ],
 };

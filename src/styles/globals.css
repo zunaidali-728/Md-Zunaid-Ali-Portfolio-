@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --color-bg: #080808;
-    --color-surface: #0F0F0F;
-    --color-border: #1A1A1A;
-    --color-gold: #C8A96E;
-    --color-gold-dim: #8A6F3F;
-    --color-text: #F0EBE1;
-    --color-muted: #5C5C5C;
-    --color-hint: #2E2E2E;
+    --color-bg: #060606;
+    --color-surface: #10100E;
+    --color-border: #242018;
+    --color-gold: #D5B46F;
+    --color-gold-dim: #8E7642;
+    --color-text: #F7F0E2;
+    --color-muted: #9A9283;
+    --color-hint: #39342A;
 
     --text-hero: clamp(72px, 10vw, 140px);
     --text-display: clamp(44px, 6vw, 80px);
@@ -23,13 +23,17 @@
     @apply bg-background text-text font-body antialiased selection:bg-gold selection:text-background;
     cursor: none; /* Using custom cursor instead */
     overflow-x: hidden;
+    background:
+      radial-gradient(circle at 20% 12%, rgba(213, 180, 111, 0.08), transparent 30%),
+      radial-gradient(circle at 88% 28%, rgba(119, 95, 52, 0.08), transparent 34%),
+      linear-gradient(180deg, #050505 0%, #0A0907 50%, #050505 100%);
   }
 
   /* Expose typography classes explicitly as requested */
   .font-display {
     font-family: "Playfair Display", serif;
     font-weight: 900;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
   }
   
   .font-body {
@@ -41,7 +45,7 @@
   .font-label {
     font-family: "DM Sans", sans-serif;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     font-size: 11px;
   }
@@ -106,6 +110,33 @@
   /* Horizontal gold rule separators */
   .hr-gold {
     @apply w-full h-[1px] bg-gold opacity-15;
+  }
+
+  .luxury-panel {
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.055), rgba(255,255,255,0.012) 34%, rgba(213,180,111,0.035)),
+      rgba(10, 10, 8, 0.78);
+    border: 1px solid rgba(213, 180, 111, 0.16);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255,255,255,0.04);
+    backdrop-filter: blur(18px);
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(92deg, #fff9e8 0%, #d5b46f 42%, #8e7642 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .animated-gold-line {
+    background: linear-gradient(90deg, transparent, rgba(213,180,111,0.85), transparent);
+    background-size: 220% 100%;
+    animation: gold-line-sweep 3.8s ease-in-out infinite;
+  }
+
+  @keyframes gold-line-sweep {
+    0%, 100% { background-position: 200% 0; opacity: 0.4; }
+    50% { background-position: 0 0; opacity: 1; }
   }
 
   @keyframes split-screen-open {

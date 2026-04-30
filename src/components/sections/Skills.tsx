@@ -87,28 +87,28 @@ const Skills = () => {
 
   return (
     <SectionLayout id="skills" number="03" eyebrow="SKILLS">
-      <div ref={containerRef} className="relative w-full z-10 w-[min(100vw,1100px)]">
+      <div ref={containerRef} className="relative z-10 w-full">
         {/* BACKGROUND ACCENT text */}
         <div 
           ref={bgTextRef as any}
-          className="absolute -top-[60px] -right-[30px] font-display text-[300px] text-[#F0EBE1] opacity-[0.025] pointer-events-none z-0"
+          className="absolute -top-[60px] -right-[30px] font-display text-[220px] md:text-[300px] text-[#F0EBE1] opacity-[0.025] pointer-events-none z-0"
           style={{ lineHeight: 0.8 }}
         >
           SKILLS
         </div>
 
         <h2 ref={headingRef} className="font-display text-display text-text max-w-[800px] mb-16 relative z-10">
-          The stack I work with.
+          A stack shaped for polished products.
         </h2>
 
         {/* 2x2 Grid Container */}
-        <div ref={gridRef} className="relative max-w-[1100px] mx-auto border border-[#1E1E1E] bg-[#1E1E1E] z-10">
+        <div ref={gridRef} className="relative max-w-[1100px] mx-auto border border-gold/15 bg-gold/10 z-10 rounded-[8px] overflow-hidden shadow-[0_28px_100px_rgba(0,0,0,0.34)]">
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[1px]">
             {panels.map((panel) => (
               <div 
                 key={panel.id} 
-                className="skill-panel group relative bg-[#080808] sm:bg-[rgba(255,255,255,0.015)] px-6 py-8 md:px-[40px] md:py-[36px] overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_0_1px_rgba(200,169,110,0.2)] hover:z-10"
+                className="skill-panel group relative bg-[#080808]/95 sm:bg-[rgba(255,255,255,0.018)] px-6 py-8 md:px-[40px] md:py-[36px] overflow-hidden transition-all duration-300 hover:bg-[rgba(213,180,111,0.045)] hover:shadow-[0_0_0_1px_rgba(213,180,111,0.24)] hover:z-10"
               >
                 {/* L-Shape Corner Accents */}
                 <div className="accent-h absolute top-0 left-0 w-[20px] h-[1px] bg-gold origin-left" />
@@ -126,7 +126,7 @@ const Skills = () => {
                   {panel.items.map((skill) => (
                     <div 
                       key={skill}
-                      className="skill-tag relative group/tag font-body text-[13px] text-[#9A9A9A] border border-[#2A2A2A] bg-transparent rounded-[3px] px-[18px] py-[8px] transition-all duration-250 ease-out hover:border-gold hover:text-[#F0EBE1] hover:bg-[rgba(200,169,110,0.06)] overflow-hidden cursor-default flex items-center"
+                      className="skill-tag relative group/tag font-body text-[13px] text-[#B8B0A1] border border-gold/15 bg-black/10 rounded-[3px] px-[18px] py-[8px] transition-all duration-250 ease-out hover:border-gold hover:text-[#F0EBE1] hover:bg-[rgba(213,180,111,0.08)] overflow-hidden cursor-default flex items-center"
                     >
                       {/* Gold dot hover effect */}
                       <div className="w-[4px] h-[4px] bg-gold rounded-full absolute left-[8px] transform -translate-x-[8px] opacity-0 group-hover/tag:translate-x-0 group-hover/tag:opacity-100 transition-all duration-200" />

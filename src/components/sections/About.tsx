@@ -32,7 +32,7 @@ const AnimatedCounter = ({ value, suffix = '', label, sublabel }: any) => {
     const obj = { val: 0 };
     let animDuration = 2;
     if (value === 1) animDuration = 0.8;
-    else if (value === 15) animDuration = 1.5;
+    else if (value >= 15) animDuration = 1.5;
 
     gsap.to(obj, {
       val: value,
@@ -199,14 +199,14 @@ const About = () => {
         {/* Left Column (60) */}
         <div className="lg:col-span-7 flex flex-col gap-10">
           <h2 className="font-display text-display text-text leading-tight max-w-[600px]">
-            Passionate about systems that scale.
+            Building systems with polish, speed, and presence.
           </h2>
           
           <div ref={contentRef as any} className="font-body text-body-lg text-muted max-w-[560px]">
             {portfolioData.personal.bio}
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-6 pt-10 border-t border-border">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-6 pt-10 border-t border-gold/15">
             {portfolioData.stats.map((stat, i) => (
               <AnimatedCounter key={i} {...stat} />
             ))}

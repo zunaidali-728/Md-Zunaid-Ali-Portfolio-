@@ -13,19 +13,21 @@ export const SectionLayout: React.FC<SectionLayoutProps> = ({ id, number, eyebro
 
   return (
     <section id={id} className="relative w-full py-[100px] md:py-[160px] overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0)_28%,rgba(213,180,111,0.018)_100%)] pointer-events-none" />
       {/* Decorative Number */}
       <div 
         ref={numberRef}
-        className="absolute top-0 md:-top-16 left-4 md:left-12 font-display text-[140px] md:text-[200px] leading-none text-text opacity-[0.04] pointer-events-none select-none z-0"
+        className="absolute top-0 md:-top-16 left-4 md:left-12 font-display text-[140px] md:text-[200px] leading-none text-text opacity-[0.045] pointer-events-none select-none z-0"
       >
         {number}
       </div>
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-[120px] relative z-10 w-full">
         {/* Eyebrow */}
-        <div className="font-label text-gold mb-16 inline-block relative pr-12">
+        <div className="font-label text-gold mb-16 inline-flex items-center gap-4 relative pr-12">
+          <span className="text-gold/50">{number}</span>
           {eyebrow}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-[1px] bg-gold opacity-50" />
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-[1px] animated-gold-line" />
         </div>
         
         {/* Content */}

@@ -12,9 +12,9 @@ export const GlobalProgressBar = () => {
   }, [scrollYProgress]);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[2px] bg-border z-[100]">
+    <div className="fixed top-0 left-0 w-full h-[2px] bg-transparent z-[101]">
       <div 
-        className="h-full bg-gold"
+        className="h-full bg-gold shadow-[0_0_18px_rgba(213,180,111,0.75)]"
         style={{ width: `${width}%` }}
       />
     </div>
