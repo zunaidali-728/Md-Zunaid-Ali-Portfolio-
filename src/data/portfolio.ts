@@ -9,7 +9,7 @@ export const portfolioData = {
     github: "https://github.com/zunaidali-728",
     linkedin: "https://www.linkedin.com/in/md-zunaid-ali-315bb8229",
     resume: "/ZunaidAli_updatedResume.pdf",
-    avatar: "/profile.jpg",
+    avatar: "/profile.jpeg",
   },
   experience: [
     {
