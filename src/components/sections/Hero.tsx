@@ -116,7 +116,7 @@ const Hero = () => {
         <div className="flex flex-col items-center">
           <div ref={subLine1Ref} className="font-body text-[clamp(16px,2vw,20px)] text-[#F7F0E2] font-normal max-w-[820px]" />
           <div ref={subLine2Ref} className="font-body text-[14px] md:text-[15px] font-light text-muted mt-[12px] max-w-[760px]">
-            <span className="tech-kw">Java</span> / <span className="tech-kw">Spring Boot</span> / <span className="tech-kw">React</span> / <span className="tech-kw">Supabase</span> / <span className="tech-kw">Framer Motion</span>
+            <span className="tech-kw">Java</span> / <span className="tech-kw">Android</span> / <span className="tech-kw">Spring Boot</span> / <span className="tech-kw">React</span> / <span className="tech-kw">Supabase</span> / <span className="tech-kw">Framer Motion</span>
           </div>
         </div>
 
