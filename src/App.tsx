@@ -23,7 +23,7 @@ const OpeningSequence = () => (
     className="fixed inset-0 z-[9998] pointer-events-none bg-[#050505]"
     initial={{ opacity: 1 }}
     animate={{ opacity: 0 }}
-    transition={{ duration: 0.5, delay: 2.15, ease: 'easeOut' }}
+    transition={{ duration: 0.8, delay: 3.8, ease: 'easeOut' }}
   >
     <motion.div
       className="absolute inset-6 md:inset-10 border border-[rgba(200,169,110,0.24)]"
@@ -37,15 +37,15 @@ const OpeningSequence = () => (
         className="font-label text-gold tracking-[0.55em] mb-8"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+        transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
       >
         PREMIUM PORTFOLIO
       </motion.div>
       <motion.div
         className="font-display italic text-[clamp(84px,16vw,190px)] leading-none text-[#F7EFD9] drop-shadow-[0_0_36px_rgba(200,169,110,0.2)]"
-        initial={{ opacity: 0, scale: 0.88, filter: 'blur(18px)' }}
+        initial={{ opacity: 0, scale: 0.85, filter: 'blur(24px)' }}
         animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 1.05, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
+        transition={{ duration: 1.4, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
       >
         ZA
       </motion.div>
@@ -53,13 +53,13 @@ const OpeningSequence = () => (
         className="mt-7 h-[1px] w-[min(420px,72vw)] bg-gradient-to-r from-transparent via-gold to-transparent"
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 0.9, delay: 0.85, ease: 'easeOut' }}
+        transition={{ duration: 1.0, delay: 1.2, ease: 'easeOut' }}
       />
       <motion.div
         className="mt-7 font-body text-[12px] uppercase tracking-[0.42em] text-[#8C877A]"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 1.05, ease: 'easeOut' }}
+        transition={{ duration: 0.8, delay: 1.6, ease: 'easeOut' }}
       >
         Software Engineer / Full-Stack Experiences
       </motion.div>
@@ -68,7 +68,7 @@ const OpeningSequence = () => (
       className="absolute inset-0 bg-black"
       initial={{ clipPath: 'inset(0 0 0 0)' }}
       animate={{ clipPath: 'inset(0 0 100% 0)' }}
-      transition={{ duration: 1.0, delay: 1.55, ease: [0.77, 0, 0.175, 1] }}
+      transition={{ duration: 1.2, delay: 2.6, ease: [0.77, 0, 0.175, 1] }}
     />
   </motion.div>
 );

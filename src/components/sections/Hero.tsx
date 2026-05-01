@@ -18,39 +18,43 @@ const Hero = () => {
       `<span class="inline-block overflow-hidden pb-1 -mb-1"><span class="inline-block sub-word1 opacity-0 translate-y-full">${word}</span></span>`
     ).join(' ');
 
-    const tl = gsap.timeline({ delay: 0.45 });
+    const tl = gsap.timeline({ delay: 3.2 });
+
+    gsap.set('.name-char', { filter: 'blur(8px)', scale: 0.95 });
 
     tl.to('.name-char', {
       y: '0%',
       opacity: 1,
       rotateX: 0,
-      duration: 0.95,
-      ease: 'power4.out',
-      stagger: 0.035,
+      filter: 'blur(0px)',
+      scale: 1,
+      duration: 1.2,
+      ease: 'expo.out',
+      stagger: 0.04,
     }, 0);
 
     if (shimmerRef.current) {
       tl.to(shimmerRef.current, {
         x: nameRef.current.offsetWidth + 140,
-        duration: 1.1,
+        duration: 1.2,
         ease: 'power2.inOut',
         onComplete: () => {
           if (shimmerRef.current) shimmerRef.current.style.opacity = '0';
         },
-      }, 0.8);
+      }, 0.6);
     }
 
-    tl.fromTo(nameRef.current, { scale: 1.012 }, { scale: 1, duration: 0.45, ease: 'power2.out' }, 0.95);
-    tl.to(eyebrowRef.current, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.65);
-    tl.to('.sub-word1', { y: 0, opacity: 1, duration: 0.62, ease: 'power3.out', stagger: 0.045 }, 1.0);
-    tl.fromTo(subLine2Ref.current, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out' }, 1.35);
-    tl.to('.cta-btn', { y: 0, opacity: 1, duration: 0.62, ease: 'power3.out', stagger: 0.1 }, 1.65);
+    tl.fromTo(nameRef.current, { scale: 1.012 }, { scale: 1, duration: 0.5, ease: 'power2.out' }, 0.9);
+    tl.to(eyebrowRef.current, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 0.5);
+    tl.to('.sub-word1', { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', stagger: 0.04 }, 0.9);
+    tl.fromTo(subLine2Ref.current, { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out' }, 1.3);
+    tl.to('.cta-btn', { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', stagger: 0.1 }, 1.6);
 
     gsap.to(subLine2Ref.current.querySelectorAll('.tech-kw'), {
       color: '#D5B46F',
       duration: 0.35,
       stagger: 0.12,
-      delay: 1.75,
+      delay: 4.5,
       yoyo: true,
       repeat: 1,
       onComplete: () => {
@@ -100,7 +104,7 @@ const Hero = () => {
             <span className="text-gold italic block whitespace-nowrap md:inline-block md:ml-[0.12em]">
               {nameString2.map((char, i) => (
                 <span key={`2-${i}`} className="inline-block overflow-hidden pb-4 -mb-4">
-                  <span className="name-char inline-block opacity-0 translate-y-[110%] rotate-x-25 origin-bottom pr-[0.02em]">{char === ' ' ? '\u00A0' : char}</span>
+                  <span className={`name-char inline-block opacity-0 translate-y-[110%] rotate-x-25 origin-bottom ${(char === 'i' || char === 'l') ? 'pr-[0.08em]' : 'pr-[0.02em]'}`}>{char === ' ' ? '\u00A0' : char}</span>
                 </span>
               ))}
             </span>
